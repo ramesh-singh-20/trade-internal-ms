@@ -1,10 +1,12 @@
 package com.alphacoder.domain.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.sql.Date;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TradeResponse {
     private Long id;
     private String stock;
