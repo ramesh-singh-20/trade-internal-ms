@@ -102,7 +102,7 @@ public class TradeServiceImpl implements TradeService {
     }
 
     private Double getPortfolioValue(){
-        String portfolioURL= "http://localhost:8082/portfolio/asset";
+        String portfolioURL= "http://PORTFOLIO-INTERNAL-MS/portfolio/asset";
         ResponseDto<Double> responseDto= this.template.getForObject(portfolioURL, ResponseDto.class);
         return responseDto.getData();
     }
