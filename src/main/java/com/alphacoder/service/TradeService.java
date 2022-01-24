@@ -1,6 +1,6 @@
 package com.alphacoder.service;
 
-import com.alphacoder.domain.response.TradeRequest;
+import com.alphacoder.domain.request.TradeRequest;
 import com.alphacoder.domain.response.TradeResponseDto;
 
 public interface TradeService {

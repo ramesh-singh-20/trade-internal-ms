@@ -1,4 +1,4 @@
-package com.alphacoder.domain.response;
+package com.alphacoder.domain.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.alphacoder.mapper;
 
-import com.alphacoder.domain.response.TradeRequest;
+import com.alphacoder.domain.request.TradeRequest;
 import com.alphacoder.domain.response.TradeResponse;
 import com.alphacoder.entity.Trade;
 import org.mapstruct.InjectionStrategy;
