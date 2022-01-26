@@ -12,9 +12,10 @@ spring:
           dialect: org.hibernate.dialect.MySQL8Dialect
           format_sql: true
       show-sql: true
-
   profiles:
     active: ${ENV}
+  config:
+    import: configserver:${SPRING_CLOUD_CONFIG_URI:http://localhost:9196}
 
 management:
   endpoints:

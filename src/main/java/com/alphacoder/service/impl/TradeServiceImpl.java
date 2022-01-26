@@ -30,11 +30,11 @@ import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__ ({@Autowired}))
-@RefreshScope
+//@RefreshScope
 public class TradeServiceImpl implements TradeService {
     private final TradeRepository repository;
     private final TradeMapper mapper;
-    @Lazy
+    //@Lazy
     private final RestTemplate template;
 
     @Value("${app.microservice.portfolio.endpoints.asset}")
