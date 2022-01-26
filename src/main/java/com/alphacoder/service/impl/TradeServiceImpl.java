@@ -14,6 +14,9 @@ import com.alphacoder.util.TradeUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,15 +26,19 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__ ({@Autowired}))
+@RefreshScope
 public class TradeServiceImpl implements TradeService {
     private final TradeRepository repository;
     private final TradeMapper mapper;
+    @Lazy
     private final RestTemplate template;
+
+    @Value("${app.microservice.portfolio.endpoints.asset}")
+    private String PORTFOLIO_ASSET_URL;
 
     @Override
     public void addTrade(TradeRequest tradeRequest) {
@@ -102,8 +109,8 @@ public class TradeServiceImpl implements TradeService {
     }
 
     private Double getPortfolioValue(){
-        String portfolioURL= "http://PORTFOLIO-INTERNAL-MS/portfolio/asset";
-        ResponseDto<Double> responseDto= this.template.getForObject(portfolioURL, ResponseDto.class);
+        log.info("Portfolio url: "+PORTFOLIO_ASSET_URL);
+        ResponseDto<Double> responseDto= this.template.getForObject(PORTFOLIO_ASSET_URL, ResponseDto.class);
         return responseDto.getData();
     }
 

@@ -1,19 +1,20 @@
 spring:
+  application:
+    name: TRADE-INTERNAL-MS
   datasource:
     username: ${database_username}
     password: ${database_password}
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
+    jpa:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        format_sql: true
-    show-sql: true
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
+          format_sql: true
+      show-sql: true
+
   profiles:
     active: ${ENV}
-  application:
-    name: TRADE-INTERNAL-MS
 
 management:
   endpoints:
@@ -23,12 +24,3 @@ management:
         include:
           - health
           - info
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    hostname: localhost
